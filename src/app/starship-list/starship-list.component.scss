@@ -1,0 +1,67 @@
+@import "~@element/ui/modules/core";
+
+.starship-list {
+  max-width: 600px;
+  width: auto;
+  margin: auto;
+}
+.starship-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //flex-wrap: wrap;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 48px;
+}
+
+.starship-cell {
+  //flex: 1;
+  //display: flex;
+  //flex-direction: column;
+  //align-items: flex-start;
+  overflow: hidden;
+  word-wrap: break-word;
+  min-height: inherit;
+}
+
+.icon-cell {
+  width: 40px;
+}
+
+.name-cell{
+  width: 400px;
+}
+
+.starship-counts {
+  display: block;
+  label {
+    color: $color-neutrals-dark-grey;
+  }
+}
+
+.pagination{
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  position: relative;
+}
+
+.search:before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: url('/assets/search.svg') center / contain no-repeat;
+}
+
+input[type="search"] {
+  padding-left: 30px !important;
+}

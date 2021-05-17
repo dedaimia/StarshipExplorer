@@ -1,0 +1,32 @@
+<div class="starship">
+  <a routerLink="/starships">Starships</a> > <a routerLink=".">{{starshipName}}</a>
+  <h2>{{starshipName}} </h2>
+  <div *ngIf="!starship"><h2>Not Found</h2></div>
+  <div *ngIf="starship">
+
+    <label>Model</label> {{starship.model}}
+    <label>Crew</label> {{starship.crew}}
+    <label>Passengers</label> {{starship.passengers}}
+    <label>Manufacturer</label> {{starship.manufacturer}}
+  </div>
+
+  <!-- if had more pages might make this a separate re-usable component -->
+  <div class="films">
+    <h2>Films</h2>
+  </div>
+
+  <div class="pilots">
+    <h2>Pilots</h2>
+    <div *ngIf="!starship.pilotsO || starship.pilotsO.length == 0">
+      <h3>None</h3>
+    </div>
+    <div *ngIf="starship.pilotsO && starship.pilotsO.length > 0">
+      <div *ngFor="let pilot of starship.pilotsO;">
+        <h3>{{pilot.name}}</h3>
+        <label>Height</label> {{pilot.height}}
+        <label>Gender</label> {{pilot.gender}}
+      </div>
+    </div>
+
+  </div>
+</div>

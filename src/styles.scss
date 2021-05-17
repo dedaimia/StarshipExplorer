@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@element/ui/modules/typography";
+@import "~@element/ui/modules/buttons.scss";
+@import '~@element/ui/modules/forms';
+
+html {
+  background-color: $color-neutrals-light-grey;
+}
+
+label {
+  color: #808080;
+  text-transform: uppercase;
+}
