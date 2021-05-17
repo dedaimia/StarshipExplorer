@@ -1,12 +1,19 @@
 <div class="starship-list">
   <div class="search">
-    <input type="search" #search placeholder="Search input"  (keyup.enter)="doSearch(search.value)">
+    <input type="search" #search placeholder="Search input" (keyup.enter)="doSearch(search.value)" size=40>
   </div>
   <div class="starship-row" *ngFor="let starship of filteredStarships; index as i;">
-    <div class="starship-cell icon-cell"><h2><app-rocket-icon></app-rocket-icon></h2></div>
-    <div class="starship-cell name-cell"><h2>{{starship.name}}</h2>
-      <div class="starship-counts"><span>PILOTS:</span><b>{{starship.pilots.length}}</b>
-        <span class=".context-message">FILMS:</span><b>{{starship.films.length}}</b></div>
+
+
+    <div class="starship-cell starship-summary-and-icon">
+      <div class="starship-icon"><h2><app-rocket-icon></app-rocket-icon></h2></div>
+      <div class="starship-summary">
+        <h2>{{starship.name}}</h2>
+        <div class="starship-counts">
+          <div><label>Pilots:</label><b>{{starship.pilots.length}}</b></div>
+          <div><label>Films:</label><b>{{starship.films.length}}</b></div>
+        </div>
+      </div>
     </div>
     <div class="starship-cell details">
       <button class="mcui-btn primary pill" routerLink="/starships/{{starship.name}}">See details <span

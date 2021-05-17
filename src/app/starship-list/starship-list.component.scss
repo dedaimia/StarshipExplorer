@@ -8,38 +8,54 @@
 .starship-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  //flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   border-width: 0;
   border-bottom-width: 1px;
   border-style: solid;
-  align-items: center;
+  align-items: baseline;
   box-sizing: border-box;
-  min-height: 48px;
 }
 
+
 .starship-cell {
-  //flex: 1;
-  //display: flex;
-  //flex-direction: column;
-  //align-items: flex-start;
   overflow: hidden;
   word-wrap: break-word;
   min-height: inherit;
+
+  &.details{
+    margin-left: auto;
+    margin-bottom: $space-l;
+  }
 }
 
-.icon-cell {
+.starship-summary-and-icon {
+  // don't want the icon and summary to wrap, these stay on one line
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.starship-icon {
   width: 40px;
 }
 
-.name-cell{
+.starship-summary{
   width: 400px;
 }
 
 .starship-counts {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  div{
+    margin-right: $space-xxl
+  }
   label {
-    color: $color-neutrals-dark-grey;
+    float: left;
+    margint-right: $space-sm
   }
 }
 
