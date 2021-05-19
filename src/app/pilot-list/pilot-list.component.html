@@ -1,0 +1,39 @@
+<div class="pilot-list">
+  <h2>Pilots</h2>
+  <ng-container *ngIf="!pilots || pilots.length == 0">
+    <h4>None</h4>
+  </ng-container>
+  <ng-container *ngIf="pilots && pilots.length > 0">
+    <div class="pilot-row" *ngFor="let pilot of pilots; index as i;">
+      <div class="pilot-cell pilot-summary-and-icon">
+        <div class="pilot-icon"><img src="/assets/person.svg" width="20px"></div>
+        <div class="pilot-summary">
+          <span [class]="embedded ? 'h4' : 'h2'">{{pilot.name}}</span>
+          <div class="pilot-counts">
+            <div><span class="label">Height:</span><b>{{pilot.height}}</b></div>
+            <div><span class="label">Gender:</span><b>{{pilot.gender}}</b></div>
+            <div><span class="label">Films:</span><b>{{pilot.films.length}}</b></div>
+          </div>
+        </div>
+      </div>
+     <div class="pilot-cell details">
+        <button class="mcui-btn primary pill" routerLink="/pilots/{{pilot.name}}">See details <span
+          style="margin-left: 30px"><svg
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <use xlink:href="#icon-arrow-right"></use>
+      </svg></span></button>
+      </div>
+    </div>
+  </ng-container>
+
+  <svg style="position: absolute; width: 0; height: 0">
+    <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+      <title>arrow-right</title>
+      <polygon points="22.71 8.29 21.29 9.71 26.59 15 2 15 2 17 26.59 17 21.29 22.29 22.71 23.71 30.41 16 22.71 8.29"></polygon>
+    </symbol>
+  </svg>
+
+</div>
+
+
+

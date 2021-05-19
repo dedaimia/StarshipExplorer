@@ -1,0 +1,62 @@
+@import "../../styles";
+
+.pilot-list {
+  max-width: 600px;
+  width: auto;
+  margin: auto;
+}
+.pilot-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+  align-items: baseline;
+  box-sizing: border-box;
+  margin: $space-stack-default;
+}
+
+.pilot-cell {
+  overflow: hidden;
+  word-wrap: break-word;
+  min-height: inherit;
+
+  &.details{
+    margin-left: auto;
+    margin-bottom: $space-l;
+  }
+}
+
+.pilot-summary-and-icon {
+  // don't want the icon and summary to wrap, these stay on one line
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.pilot-icon {
+  width: 40px;
+  margin: $space-stack-default;
+}
+
+.pilot-summary{
+  width: 400px;
+  margin: $space-stack-default;
+}
+
+.pilot-counts {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-content: baseline;
+  div{
+    margin-right: $space-xxl;
+  }
+  label, .label{
+    margin-right: $space-sm
+  }
+}

@@ -37,23 +37,6 @@
     </div>
   </div>
 
-  <app-list title="Pilots" [items]="starship.pilotsO" ></app-list>
+  <app-pilot-list title="Pilots" [pilots]="starship.pilotsO" [embedded]=true></app-pilot-list>
 
-  <div class="pilots">
-    <h2>Pilots</h2>
-    <div class="related-cards">
-      <div *ngIf="!starship.pilotsO || starship.pilotsO.length == 0">
-        <h4>None</h4>
-      </div>
-      <div *ngIf="starship.pilotsO && starship.pilotsO.length > 0">
-        <div *ngFor="let pilot of starship.pilotsO;">
-          <h4><img src="/assets/person.svg" width="20px" class="list-image">{{pilot.name}}</h4>
-          <div class="detail-row">
-            <div class="detail"><label>Height</label> {{pilot.height}}</div>
-            <div class="detail"><label>Gender</label> {{pilot.gender}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
