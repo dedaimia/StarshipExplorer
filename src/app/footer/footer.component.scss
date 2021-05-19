@@ -6,6 +6,10 @@
   max-width: 1500px;
   margin: $space-m auto 0 auto;
   padding: $space-inset-m;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 img {

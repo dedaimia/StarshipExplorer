@@ -1,5 +1,5 @@
 @import '../../styles';
-.visible-header {
+.header {
   background-color: white;
   width: 100%;
   max-width: 1500px;
@@ -10,12 +10,6 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: $header-z-index;
-}
-
-.space-reserved-for-header {
-  margin:  0 auto $space-m auto;
-  height: 50px;
-  padding: $space-inset-m;
 }
 
 h1 {
