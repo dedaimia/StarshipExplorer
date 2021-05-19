@@ -2,6 +2,7 @@
   <div class="search">
     <input type="search" #search placeholder="Search input" (keyup.enter)="doSearch(search.value)" size=40>
   </div>
+  <h2>Starships</h2>
   <div class="starship-row" *ngFor="let starship of filteredStarships; index as i;">
 
 
@@ -10,8 +11,8 @@
       <div class="starship-summary">
         <h2>{{starship.name}}</h2>
         <div class="starship-counts">
-          <div><label>Pilots:</label><b>{{starship.pilots.length}}</b></div>
-          <div><label>Films:</label><b>{{starship.films.length}}</b></div>
+          <div><span class="label">Pilots:</span><b>{{starship.pilots.length}}</b></div>
+          <div><span class="label">Films:</span><b>{{starship.films.length}}</b></div>
         </div>
       </div>
     </div>
@@ -25,11 +26,14 @@
     </svg></span></button>
     </div>
   </div>
-  <!-- <div class="pagination">
-    <button class="mcui-btn minimalist" [disabled]="!page || !page.previous" (click)="previous()">< Previous</button>
-    <div>PAGE: {{pageNum}}</div>
-    <button class="mcui-btn minimalist" [disabled]="!page || !page.next" (click)="next()">Next ></button>
-  </div> -->
+
+  <svg style="position: absolute; width: 0; height: 0">
+      <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+        <title>arrow-right</title>
+        <polygon points="22.71 8.29 21.29 9.71 26.59 15 2 15 2 17 26.59 17 21.29 22.29 22.71 23.71 30.41 16 22.71 8.29"></polygon>
+      </symbol>
+  </svg>
+
 </div>
 
 

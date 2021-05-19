@@ -10,7 +10,25 @@ html {
   @include scroll;
 }
 
-label {
-  color: #808080;
+label, .label{
+  color: #595959;
   text-transform: uppercase;
+  font-size: .75em;
+}
+
+$mobile: 479px !default;
+
+//device is less than mobile width
+@mixin on_mobile() {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+//device is greater than mobile width
+//opposite of on_mobile()
+@mixin not_mobile() {
+  @media (min-width: $mobile + 1) {
+    @content;
+  }
 }

@@ -1,32 +1,59 @@
 <div class="starship">
   <a routerLink="/starships">Starships</a> > <a routerLink=".">{{starshipName}}</a>
   <h2>{{starshipName}} </h2>
-  <div *ngIf="!starship"><h2>Not Found</h2></div>
-  <div *ngIf="starship">
+  <div *ngIf="!starship" ><h2>Not Found</h2></div>
 
-    <label>Model</label> {{starship.model}}
-    <label>Crew</label> {{starship.crew}}
-    <label>Passengers</label> {{starship.passengers}}
-    <label>Manufacturer</label> {{starship.manufacturer}}
+  <div *ngIf="starship" class="starship-picture-and-details">
+    <div class="starship-picture"><img src="/assets/Image-Placeholder.png" width="100px"/></div>
+    <div class="starship-details">
+      <div class="detail-row">
+        <div class="detail"><label>Manufacturer</label> {{starship.manufacturer}}</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail"><label>Crew</label> {{starship.crew}}</div>
+        <div class="detail"><label>Passengers</label> {{starship.passengers}}</div>
+        <div class="detail"><label>Hyperdrive rating</label> {{starship.hyperdrive_rating}} years</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail"><label>Model</label> {{starship.model}}</div>
+      </div>
+    </div>
   </div>
 
   <!-- if had more pages might make this a separate re-usable component -->
   <div class="films">
     <h2>Films</h2>
+    <div *ngIf="!starship.filmsO || starship.filmsO.length == 0">
+      <h4>None</h4>
+    </div>
+    <div *ngIf="starship.filmsO && starship.filmsO.length > 0 ">
+      <div *ngFor="let film of starship.filmsO">
+        <h4>{{film.name}}</h4>
+        <div class="detail-row">
+          <div class="detail"><label>Episode</label> {{film.episode_id}}</div>
+          <div class="detail"><label>Release Date</label> {{film.release_date}}</div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <app-list title="Pilots" [items]="starship.pilotsO" ></app-list>
 
   <div class="pilots">
     <h2>Pilots</h2>
-    <div *ngIf="!starship.pilotsO || starship.pilotsO.length == 0">
-      <h3>None</h3>
-    </div>
-    <div *ngIf="starship.pilotsO && starship.pilotsO.length > 0">
-      <div *ngFor="let pilot of starship.pilotsO;">
-        <h3>{{pilot.name}}</h3>
-        <label>Height</label> {{pilot.height}}
-        <label>Gender</label> {{pilot.gender}}
+    <div class="related-cards">
+      <div *ngIf="!starship.pilotsO || starship.pilotsO.length == 0">
+        <h4>None</h4>
+      </div>
+      <div *ngIf="starship.pilotsO && starship.pilotsO.length > 0">
+        <div *ngFor="let pilot of starship.pilotsO;">
+          <h4><img src="/assets/person.svg" width="20px" class="list-image">{{pilot.name}}</h4>
+          <div class="detail-row">
+            <div class="detail"><label>Height</label> {{pilot.height}}</div>
+            <div class="detail"><label>Gender</label> {{pilot.gender}}</div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </div>

@@ -36,7 +36,7 @@ export class StarshipListComponent extends SubscriptionComponent implements OnIn
       this.filteredStarships = this.starships;
     }
     else {
-      const searchLowerCase = searchTerm.toLowerCase();
+      const searchLowerCase = searchTerm.toLowerCase().trim();
       this.filteredStarships = this.starships.filter(starship =>
                                                        starship.name.toLowerCase().includes(searchLowerCase) ||
                                                        this.pilotSearch(searchLowerCase, starship)

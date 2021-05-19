@@ -12,6 +12,7 @@ export class StarshipApiService {
   private starshipsUri: string = `${this.baseUri}/starships` ;
   private peopleUri: string = `${this.baseUri}/people`;
   private filmsUri: string = `${this.baseUri}/films`;
+  private maxPages: number = 2;
 
   private starships: Starship[] = [];
   private people: Person[] = [];
@@ -108,8 +109,9 @@ export class StarshipApiService {
    */
   private async getAllStarships(){
     let currentPage: SwapiPage = { next: this.starshipsUri, previous: undefined, count: 0, results: []};
-
-    while(currentPage.next){
+    let pages = 0;
+    while(currentPage.next && pages < this.maxPages){
+      pages++;
       currentPage = await this.getPage(currentPage.next).toPromise();
       this.starships = this.starships.concat(currentPage.results as Starship[]);
     }
@@ -122,8 +124,9 @@ export class StarshipApiService {
    */
   private async getAllPeople(){
     let currentPage: SwapiPage = { next: this.peopleUri, previous: undefined, count: 0, results: []};
-
-    while(currentPage.next){
+    let pages = 0;
+    while(currentPage.next && pages < this.maxPages){
+      pages++;
       currentPage = await this.getPage(currentPage.next).toPromise();
       this.people = this.people.concat(currentPage.results as Person[]);
     }
@@ -141,8 +144,9 @@ export class StarshipApiService {
    */
   private async getAllFilms() {
     let currentPage: SwapiPage = {next: this.filmsUri, previous: undefined, count: 0, results: []};
-
-    while (currentPage.next) {
+    let pages = 0;
+    while (currentPage.next && pages < this.maxPages) {
+      pages++;
       currentPage = await this.getPage(currentPage.next).toPromise();
       this.films = this.films.concat(currentPage.results as Film[]);
     }

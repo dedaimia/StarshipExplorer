@@ -1,5 +1,47 @@
+@import "~@element/ui/modules/core";
+@import "../../styles.scss";
+
 .starship {
   max-width: 600px;
   width: auto;
   margin: auto;
+}
+
+.starship-picture-and-details{
+  display: flex;
+}
+
+.starship-picture{
+  @include on_mobile() {
+    display: none;
+  }
+  @include not_mobile{
+    display: block;
+  }
+  margin-right: $space-l
+}
+
+.starship-details{
+
+}
+
+.detail-row {
+  display: flex;
+  @include on_mobile() {
+    flex-direction: column;
+  }
+  @include not_mobile{
+    flex-direction: row;
+  }
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: $space-l;
+}
+
+.detail {
+  margin-right: $space-xl;
+}
+
+.list-image {
+  margin-right: $space-sm;
 }

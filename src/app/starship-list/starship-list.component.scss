@@ -17,7 +17,6 @@
   box-sizing: border-box;
 }
 
-
 .starship-cell {
   overflow: hidden;
   word-wrap: break-word;
@@ -39,10 +38,12 @@
 
 .starship-icon {
   width: 40px;
+  margin: $space-stack-default;
 }
 
 .starship-summary{
   width: 400px;
+  margin: $space-stack-default;
 }
 
 .starship-counts {
@@ -50,12 +51,12 @@
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: nowrap;
+  align-content: baseline;
   div{
-    margin-right: $space-xxl
+    margin-right: $space-xxl;
   }
-  label {
-    float: left;
-    margint-right: $space-sm
+  label, .label{
+    margin-right: $space-sm
   }
 }
 
@@ -63,6 +64,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 
 .search {
   position: relative;
@@ -74,10 +76,10 @@
   left: 10px;
   top: 0;
   bottom: 0;
-  width: 20px;
+  width: 1em;
   background: url('/assets/search.svg') center / contain no-repeat;
 }
 
 input[type="search"] {
-  padding-left: 30px !important;
+  padding-left: 3em;
 }
