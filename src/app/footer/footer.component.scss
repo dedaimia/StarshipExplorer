@@ -1,7 +1,14 @@
+@import "../../styles";
+
 .footer {
   background-color: white;
   width: 100%;
   max-width: 1500px;
-  margin: auto;
+  margin: $space-m auto 0 auto;
   height: 50px;
+  padding: $space-inset-m;
+}
+h2 {
+  margin: auto;
+  font-weight: normal;
 }
