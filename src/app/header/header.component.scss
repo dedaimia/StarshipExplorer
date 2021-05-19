@@ -4,7 +4,6 @@
   width: 100%;
   max-width: 1500px;
   margin:  0 auto $space-m auto;
-  height: 50px;
   padding: $space-inset-m;
   position:fixed;
   top:0;
@@ -22,4 +21,10 @@
 h1 {
   margin: auto;
   font-weight: normal;
+}
+
+img {
+  vertical-align: middle;
+  margin-right: $space-m;
+  margin-left:  $space-m;
 }

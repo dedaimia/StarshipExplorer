@@ -5,10 +5,11 @@
   width: 100%;
   max-width: 1500px;
   margin: $space-m auto 0 auto;
-  height: 50px;
   padding: $space-inset-m;
 }
-h2 {
-  margin: auto;
-  font-weight: normal;
+
+img {
+  vertical-align: middle;
+  margin-right: $space-m;
+  margin-left:  $space-m;
 }
