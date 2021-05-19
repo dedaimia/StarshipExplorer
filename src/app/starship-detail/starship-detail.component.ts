@@ -6,11 +6,11 @@ import { Starship, StarshipExpanded } from "../models/types";
 import { SubscriptionComponent } from "../subscription-component/subscription.component";
 
 @Component({
-  selector: 'app-starship',
-  templateUrl: './starship.component.html',
-  styleUrls: ['./starship.component.scss']
+  selector: 'app-starship-detail',
+  templateUrl: './starship-detail.component.html',
+  styleUrls: ['./starship-detail.component.scss']
 })
-export class StarshipComponent extends SubscriptionComponent implements OnInit {
+export class StarshipDetailComponent extends SubscriptionComponent implements OnInit {
   allStarshipsByName?: Map<string, StarshipExpanded>;
   starshipName?: string;
   starship?: StarshipExpanded;

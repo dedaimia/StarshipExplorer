@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { StarshipListComponent } from "./starship-list/starship-list.component";
 import { RouterModule, Routes } from "@angular/router";
-import { StarshipComponent } from "./starship/starship.component";
+import { StarshipDetailComponent } from "./starship-detail/starship-detail.component";
+import { PilotDetailComponent } from "./pilot-detail/pilot-detail.component";
 
 
 
 const routes: Routes = [
-  { path: 'starships/:name', component: StarshipComponent },
+  { path: 'starships/:name', component: StarshipDetailComponent },
   { path: 'starships', component: StarshipListComponent },
+  { path: 'pilots/:name', component: PilotDetailComponent },
   { path: '**', redirectTo: '/starships'},
 ];
 

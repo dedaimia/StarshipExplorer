@@ -3,9 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StarshipListComponent } from './starship-list/starship-list.component';
-import { StarshipComponent } from './starship/starship.component';
-import { FilmsComponent } from './films/films.component';
-import { PilotsComponent } from './pilots/pilots.component';
+import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 import { StarshipApiService } from "./services/starship-api.service";
 import { SubscriptionComponent } from './subscription-component/subscription.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +16,8 @@ import { RocketIconComponent } from './rocket-icon/rocket-icon.component';
 import { ListComponent } from './list/list.component';
 import { PilotListComponent } from './pilot-list/pilot-list.component';
 import { FilmListComponent } from './film-list/film-list.component';
+import { PilotDetailComponent } from './pilot-detail/pilot-detail.component';
+import { PilotSummaryComponent } from './pilot-summary/pilot-summary.component';
 
 export const init = (starshipApiService: StarshipApiService) => () => starshipApiService.doInit();
 
@@ -25,9 +25,7 @@ export const init = (starshipApiService: StarshipApiService) => () => starshipAp
   declarations: [
     AppComponent,
     StarshipListComponent,
-    StarshipComponent,
-    FilmsComponent,
-    PilotsComponent,
+    StarshipDetailComponent,
     SubscriptionComponent,
     HeaderComponent,
     FooterComponent,
@@ -35,6 +33,8 @@ export const init = (starshipApiService: StarshipApiService) => () => starshipAp
     ListComponent,
     PilotListComponent,
     FilmListComponent,
+    PilotDetailComponent,
+    PilotSummaryComponent,
   ],
   imports: [
     BrowserAnimationsModule,
