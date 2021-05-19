@@ -12,7 +12,7 @@ export class StarshipApiService {
   private starshipsUri: string = `${this.baseUri}/starships` ;
   private peopleUri: string = `${this.baseUri}/people`;
   private filmsUri: string = `${this.baseUri}/films`;
-  private maxPages: number = 2;
+  private maxPages: number = 1000;
 
   private starships: Starship[] = [];
   private people: Person[] = [];
