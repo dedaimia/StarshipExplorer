@@ -17,6 +17,7 @@ label, .label{
 }
 
 $mobile: 479px !default;
+$header-z-index: 50;
 
 //device is less than mobile width
 @mixin on_mobile() {
