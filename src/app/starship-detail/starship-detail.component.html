@@ -1,11 +1,11 @@
 <div class="starship">
-  <a routerLink="/starships">Starships</a> > <a routerLink=".">{{starshipName}}</a>
+  <a routerLink="..">Starships</a> > <a routerLink=".">{{starshipName}}</a>
   <h2>{{starshipName}} </h2>
   <div *ngIf="error" class="mcui-emphasis-block error">
     <p>{{error}}</p>
   </div>
   <div [hidden]="!loading" class="loading_wrapper">
-    <h2>Loading starships</h2>
+    <h2>Loading data</h2>
 
     <div class="loading large inline">
       <div class="spinner">
@@ -18,7 +18,7 @@
 
   <div *ngIf="!starship && !loading && !error" ><h2>Not Found</h2></div>
 
-  <ng-container *ngIf="starship">
+  <ng-container *ngIf="!loading">
     <div class="starship-picture-and-details">
       <div class="starship-picture"><img src="/assets/Image-Placeholder.png" alt="starship-picture"/></div>
       <div class="starship-details">
