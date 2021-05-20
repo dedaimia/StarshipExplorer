@@ -1,0 +1,309 @@
+/**************** loading - stolen from Genomix project ******************/
+
+$loading_border_size: 4px;
+$loading_border_size_small: 2px;
+$loading_border_size_large: 7px;
+
+$loading_bar_width: 9px;
+$loading_bar_height: 24px;
+
+$loading_size: 36px;
+$loading_size_small: 16px;
+$loading_size_large: 64px;
+
+$loading_content_width: 240px;
+
+$padding: 20px;
+
+//**************** animation ******************
+
+@include keyframes(loading_bar) {
+  0% {
+    @include opacity(0);
+  }
+
+  25% {
+    @include opacity(100);
+  }
+
+  50% {
+    @include opacity(0);
+  }
+}
+
+@include keyframes(spin) {
+  0% {
+    @include transform(rotate(0deg));
+  }
+
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+@include keyframes(spin_centered) {
+  0% {
+    @include transform(translate(-50%, -50%) rotate(0deg));
+  }
+
+  100% {
+    @include transform(translate(-50%, -50%) rotate(360deg));
+  }
+}
+
+//**************** css ******************
+
+.loading_wrapper {
+  // Wrapper that centers the .loading element and puts some margins around it.
+  // Probably only use with "loading inline"
+  text-align: center;
+  margin: 10px;
+}
+
+.loading {
+  color: $color-primary-blue;
+
+  text: {
+    transform: uppercase;
+  }
+  line: {
+    height: 100%;
+  }
+
+  @include user-select(none);
+
+  &.small {
+
+    .spinner {
+      width: $loading_size_small;
+      height: $loading_size_small;
+
+      &:before,
+      &:after {
+        border: {
+          width: $loading_border_size_small;
+        }
+      }
+
+      &:after {
+        margin: -($loading_border_size_small + 1);
+      }
+    }
+  }
+
+  &.large {
+
+    .spinner {
+      width: $loading_size_large;
+      height: $loading_size_large;
+
+      &:before,
+      &:after {
+        border: {
+          width: $loading_border_size_large;
+        }
+      }
+
+      &:after {
+        margin: -($loading_border_size_large + 1);
+      }
+    }
+  }
+
+  &.inline {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    vertical-align: middle; //in case it's next to other inline divs
+
+    .spinner {
+      @include animation-name(spin);
+    }
+
+    > div {
+      margin: {
+        right: $padding / 4;
+      }
+    }
+
+    //because there is enough room in all of the loaders except the small version, position the loading_inside into the spinner
+    &:not(.small) {
+      .loading_inside {
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        z-index: 100;
+
+        width: $loading_size;
+
+        margin: 0px;
+
+        text: {
+          align: center;
+        }
+
+        @include translate(0%, -50%);
+      }
+
+      &.large {
+        .loading_inside {
+          width: $loading_size_large;
+        }
+      }
+    }
+  }
+
+  &:not(.inline) {
+    &.fullscreen {
+      position: fixed;
+    }
+    &:not(.fullscreen) {
+      position: absolute;
+    }
+
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    //z-index: get_index(loading);
+
+    background: {
+     // color: color_variable('loading_background');
+    }
+
+    text: {
+      align: center;
+    }
+
+    .loading_bar_container,
+    .spinner,
+    .loading_inside,
+    .loading_outside {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      @include translate(-50%, -50%);
+    }
+
+    .loading_inside {
+      z-index: 100;
+    }
+
+    .spinner {
+      z-index: 200;
+    }
+
+    .loading_outside {
+      z-index: 300;
+
+      max: {
+        width: $loading_size_large * 4; //ok to let all of these go to the widest size
+      }
+
+      margin: {
+        top: ($loading_size / 2) + ($loading_border_size) + ($padding / 4);
+      }
+
+      @include translate(-50%, 0%);
+    }
+
+    &.small {
+      .loading_inside {
+        margin: {
+          left: ($loading_size_small / 2) + ($loading_border_size_small) + ($padding / 4); //move it to the right of the spinner
+        }
+
+        text: {
+          align: left;
+        }
+
+        @include translate(0%, -50%); //translate so it's back in the middle
+      }
+
+      .loading_outside {
+        margin: {
+          top: ($loading_size_small / 2) + ($loading_border_size_small) + ($padding / 4);
+        }
+      }
+    }
+
+    &.large {
+      .loading_outside {
+        margin: {
+          top: ($loading_size_large / 2) + ($loading_border_size_large) + ($padding / 4);
+        }
+      }
+    }
+  }
+
+  //inside spinner value
+  .loading_inside {
+  }
+
+  //outside spinner text
+  .loading_ouside {
+  }
+
+  //spinner is setup as a block with the graphics on the :before pseudo element. this outer part animates at a constant speed
+  .spinner {
+    width: $loading_size;
+    height: $loading_size;
+
+    @include animation(spin_centered 1.1s linear 0s infinite);
+
+    //draw the spinner graphics which animates at a variable speed giving the illusion it speeds up and down
+    &:before {
+      content:'';
+
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      z-index: 100;
+
+      border: $loading_border_size solid transparent;
+      border: {
+        top-color: $color-primary-blue;
+        bottom-color: $color-primary-blue;
+      }
+
+      @include animation(spin 2.2s ease 0s infinite); //reverse
+
+      @include border-radius(50%);
+
+      @include box-sizing(border-box);
+      @include background-clip(padding-box);
+    }
+
+    /*
+        //the second layer is optional and give a faster outer shel of animation
+        &:after {
+          content:'';
+
+          position: absolute;
+          left: 0px;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
+          z-index: 100;
+
+          margin: -($loading_border_size + 1);
+
+          border: $loading_border_size solid transparent;
+          border: {
+            left: $loading_border_size solid color_variable('loading');
+          }
+
+          @include animation(spin 1.59s linear .25s infinite);
+
+          @include border-radius(50%);
+
+          @include box-sizing(border-box);
+          @include background-clip(padding-box);
+        }
+    */
+  }
+}

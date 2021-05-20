@@ -17,13 +17,20 @@ export class StarshipListComponent extends SubscriptionComponent implements OnIn
   searchTerm: string = '';
   starships: StarshipExpanded[] = [];
   filteredStarships: StarshipExpanded[] = [];
+  loading: boolean = true;
+  error: string = null;
 
 
   constructor( private starshipApiService: StarshipApiService, private router: Router) {
     super();
 
-    this.starships = this.starshipApiService.getStarships()
-    this.filteredStarships = this.starships;
+    this.starshipApiService.getAllStarshipsExpanded().then(starships => {
+      this.starships = starships
+      this.filteredStarships = this.starships;
+      this.loading = false;
+      this.error = null;
+    }).catch(err => this.error = "Error retrieving starships");
+
     // Todo: add routing support so can call page with search term in url?
   }
 

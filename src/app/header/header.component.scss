@@ -2,7 +2,7 @@
 .header {
   background-color: white;
   width: 100%;
-  max-width: 1500px;
+  max-width: 90rem;
   margin:  0 auto $space-m auto;
   padding: $space-inset-m;
   position:fixed;
@@ -11,14 +11,26 @@
   transform: translateX(-50%);
   z-index: $header-z-index;
 }
+.user {
+  float: right;
+  padding: .5rem;
+  border: 1px solid #d2d2d2;
+  img {
+    width: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+}
 
 h1 {
   margin: auto;
   font-weight: normal;
+  float: left;
 }
 
 img {
   vertical-align: middle;
   margin-right: $space-m;
   margin-left:  $space-m;
+  width: 2.5rem;
 }

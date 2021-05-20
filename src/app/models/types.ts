@@ -7,7 +7,8 @@ export interface SwapiPage{
 }
 
 export interface SwapiObject {
-  name: string;
+  created: string;
+  edited: string;
   url: string;
 }
 
@@ -70,6 +71,23 @@ export interface Film extends SwapiObject{
   vehicles: string[];
   species: string[];
   created: string;
-  edited: string
+  edited: string;
+  url: string;
+}
+
+export interface Planet extends SwapiObject{
+  name: string;
+  diameter: number;
+  rotation_period: string;
+  orbital_period: string;
+  gravity: string;
+  population: string;
+  climate: string;
+  terrain: string;
+  surface_water: string;
+  residents: string[];
+  films: string[];
+  created: string;
+  edited: string;
   url: string
 }

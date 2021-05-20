@@ -3,7 +3,7 @@
 .footer {
   background-color: white;
   width: 100%;
-  max-width: 1500px;
+  max-width: 90rem;
   margin: $space-m auto 0 auto;
   padding: $space-inset-m;
   position: absolute;
@@ -16,4 +16,5 @@ img {
   vertical-align: middle;
   margin-right: $space-m;
   margin-left:  $space-m;
+  width: 2rem;
 }

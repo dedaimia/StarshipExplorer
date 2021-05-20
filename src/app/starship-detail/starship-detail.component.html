@@ -1,42 +1,66 @@
 <div class="starship">
   <a routerLink="/starships">Starships</a> > <a routerLink=".">{{starshipName}}</a>
   <h2>{{starshipName}} </h2>
-  <div *ngIf="!starship" ><h2>Not Found</h2></div>
+  <div *ngIf="error" class="mcui-emphasis-block error">
+    <p>{{error}}</p>
+  </div>
+  <div [hidden]="!loading" class="loading_wrapper">
+    <h2>Loading starships</h2>
 
-  <div *ngIf="starship" class="starship-picture-and-details">
-    <div class="starship-picture"><img src="/assets/Image-Placeholder.png" width="100px"/></div>
-    <div class="starship-details">
-      <div class="detail-row">
-        <div class="detail"><label>Manufacturer</label> {{starship.manufacturer}}</div>
-      </div>
-      <div class="detail-row">
-        <div class="detail"><label>Crew</label> {{starship.crew}}</div>
-        <div class="detail"><label>Passengers</label> {{starship.passengers}}</div>
-        <div class="detail"><label>Hyperdrive rating</label> {{starship.hyperdrive_rating}} years</div>
-      </div>
-      <div class="detail-row">
-        <div class="detail"><label>Model</label> {{starship.model}}</div>
+    <div class="loading large inline">
+      <div class="spinner">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
       </div>
     </div>
   </div>
 
-  <!-- if had more pages might make this a separate re-usable component -->
-  <div class="films">
-    <h2>Films</h2>
-    <div *ngIf="!starship.filmsO || starship.filmsO.length == 0">
-      <h4>None</h4>
-    </div>
-    <div *ngIf="starship.filmsO && starship.filmsO.length > 0 ">
-      <div *ngFor="let film of starship.filmsO">
-        <h4><img src="/assets/film.svg" width="20">&nbsp;{{film.title}}</h4>
+  <div *ngIf="!starship && !loading && !error" ><h2>Not Found</h2></div>
+
+  <ng-container *ngIf="starship">
+    <div class="starship-picture-and-details">
+      <div class="starship-picture"><img src="/assets/Image-Placeholder.png" alt="starship-picture"/></div>
+      <div class="starship-details">
         <div class="detail-row">
-          <div class="detail"><span class="label">Episode</span> {{film.episode_id}}</div>
-          <div class="detail"><span class="label">Release Date</span> {{film.release_date}}</div>
+          <div class="detail"><label>Manufacturer</label> {{starship.manufacturer}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail"><label>Crew</label> {{starship.crew}}</div>
+          <div class="detail"><label>Passengers</label> {{starship.passengers}}</div>
+          <div class="detail"><label>Hyperdrive rating</label> {{starship.hyperdrive_rating}} years</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail"><label>Model</label> {{starship.model}}</div>
         </div>
       </div>
     </div>
-  </div>
 
-  <app-pilot-list title="Pilots" [pilots]="starship.pilotsO" [embedded]=true></app-pilot-list>
+    <!--
+     Films - one option for displaying related objects.
+     if had more pages might make this a separate re-usable component
+     Could also be fun to have the films expandable (just show title initially)
+    -->
+    <div class="films">
+      <h2>Films</h2>
+      <div *ngIf="!starship.filmsO || starship.filmsO.length == 0">
+        <h4>None</h4>
+      </div>
+      <div *ngIf="starship.filmsO && starship.filmsO.length > 0 ">
+        <div *ngFor="let film of starship.filmsO">
+          <h4><img src="/assets/film.svg" width="20">&nbsp;{{film.title}}</h4>
+          <div class="detail-row">
+            <div class="detail"><span class="label">Episode</span> {{film.episode_id}}</div>
+            <div class="detail"><span class="label">Release Date</span> {{film.release_date}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!--
+     Pilots
+     another option for displaying details - using list component that could be a top-level "people" page as well
+     -->
+    <app-pilot-list title="Pilots" [pilots]="starship.pilotsO" [planetsByUrl]="allPlanetsByUrl" [embedded]=true></app-pilot-list>
+  </ng-container>
 </div>

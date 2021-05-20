@@ -13,7 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { RocketIconComponent } from './rocket-icon/rocket-icon.component';
-import { ListComponent } from './list/list.component';
 import { PilotListComponent } from './pilot-list/pilot-list.component';
 import { FilmListComponent } from './film-list/film-list.component';
 import { PilotDetailComponent } from './pilot-detail/pilot-detail.component';
@@ -30,7 +29,6 @@ export const init = (starshipApiService: StarshipApiService) => () => starshipAp
     HeaderComponent,
     FooterComponent,
     RocketIconComponent,
-    ListComponent,
     PilotListComponent,
     FilmListComponent,
     PilotDetailComponent,

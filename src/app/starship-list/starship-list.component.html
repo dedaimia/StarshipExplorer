@@ -1,4 +1,20 @@
 <div class="starship-list">
+  <div *ngIf="error" class="mcui-emphasis-block error">
+    <p>{{error}}</p>
+  </div>
+  <div [hidden]="!loading" class="loading_wrapper">
+    <h2>Loading starships</h2>
+
+    <div class="loading large inline">
+      <div class="spinner">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!loading && !error">
   <div class="search">
     <input type="search" #search placeholder="Search input" (keyup.enter)="doSearch(search.value)" size=40>
   </div>
@@ -8,7 +24,7 @@
 
     <div class="starship-cell starship-summary-and-icon">
       <!--<div class="starship-icon"><h2><app-rocket-icon></app-rocket-icon></h2></div>-->
-      <div class="starship-icon"><img src="/assets/rocket.svg" width="25px"></div>
+      <div class="starship-icon"><img src="/assets/rocket.svg"></div>
       <div class="starship-summary">
         <h2>{{starship.name}}</h2>
         <div class="starship-counts">
@@ -19,7 +35,7 @@
     </div>
     <div class="starship-cell details">
       <button class="mcui-btn primary pill" routerLink="/starships/{{starship.name}}">See details <span
-        style="margin-left: 30px"><svg
+        style="margin-left: 1.5rem"><svg
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <use xlink:href="#icon-arrow-right"></use>
     </svg></span></button>
@@ -32,7 +48,7 @@
         <polygon points="22.71 8.29 21.29 9.71 26.59 15 2 15 2 17 26.59 17 21.29 22.29 22.71 23.71 30.41 16 22.71 8.29"></polygon>
       </symbol>
   </svg>
-
+  </ng-container>
 </div>
 
 

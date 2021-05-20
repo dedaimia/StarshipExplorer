@@ -1,7 +1,7 @@
 @import "../../styles";
 
 .pilot-list {
-  max-width: 600px;
+  max-width: 40rem;
   width: auto;
   margin: auto;
 }
@@ -38,12 +38,15 @@
 }
 
 .pilot-icon {
-  width: 40px;
+  width: 2rem;
   margin: $space-stack-default;
+  img {
+    width: 1.25rem;
+  }
 }
 
 .pilot-summary{
-  width: 400px;
+  width: 20rem;
   margin: $space-stack-default;
 }
 

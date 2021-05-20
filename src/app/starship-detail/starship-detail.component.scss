@@ -2,7 +2,7 @@
 @import "../../styles.scss";
 
 .starship {
-  max-width: 600px;
+  max-width: 40rem;
   width: auto;
   margin: auto;
 }
@@ -18,7 +18,10 @@
   @include not_mobile{
     display: block;
   }
-  margin-right: $space-l
+  margin-right: $space-l;
+  img {
+    width: 8rem;
+  }
 }
 
 .starship-details{

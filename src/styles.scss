@@ -3,6 +3,9 @@
 @import "~@element/ui/modules/typography";
 @import "~@element/ui/modules/buttons.scss";
 @import '~@element/ui/modules/forms';
+@import "~@element/ui/modules/emphasis-blocks";
+@import "styles/mixins";
+@import "styles/loading";
 
 
 html {
@@ -52,15 +55,17 @@ label, .label{
   }
 }
 
-/* default .loading styles, .loading should be invisible, opacity: 0, z-index: -1 */
-.loading {
+/* default .app-loading styles, .loading should be invisible, opacity: 0, z-index: -1 */
+.app-loading {
+ display:none;
   opacity: 0;
-  transition: opacity .8s ease-in-out;
-  background: #000;
   z-index: -1;
 }
-/* .loading screen is visible when app is not bootstrapped yet, app-root is empty */
-app-root:empty + .loading {
+/* .app-loading is visible when app is not bootstrapped yet, app-root is empty */
+app-root:empty + .app-loading {
+  display: block;
   opacity: 1;
   z-index: 100;
+  width: 100%;
+  text-align: center;
 }
